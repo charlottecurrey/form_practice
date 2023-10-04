@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Form Practice</title>
+    <style>
+      form {
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        padding: 20px;
+        width: 400px;
+        margin: 20px auto;
+      }
+
+      fieldset {
+        border: none;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Just use plain HTML JS CSS</p>
+
+    <div id="output"></div>
+
+    <form action="" method="get" id="myForm">
+      <fieldset>
+        <label for="textInput">Text Input:</label>
+        <input type="text" id="textInput" name="textInput" />
+      </fieldset>
+
+      <fieldset>
+        <label for="dropdown">Dropdown:</label>
+        <select id="dropdown" name="dropdown">
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label for="num1">Number 1:</label>
+        <input type="number" id="num1" name="num1" />
+        <label for="num2">Number 2:</label>
+        <input type="number" id="num2" name="num2" />
+      </fieldset>
+
+      <fieldset>
+        <label>Radio Buttons:</label>
+        <input type="radio" id="radio1" name="radio" value="radio1" /><label
+          for="radio1"
+          >Radio 1</label
+        >
+        <input type="radio" id="radio2" name="radio" value="radio2" /><label
+          for="radio2"
+          >Radio 2</label
+        >
+      </fieldset>
+
+      <fieldset>
+        <label for="textarea">Textarea:</label>
+        <textarea id="textarea" name="textarea"></textarea>
+      </fieldset>
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let outputDiv = document.getElementById("output");
+          let formData = new URLSearchParams(new FormData(e.target)).toString();
+          let numsAdded =
+            parseFloat(e.target.num1.value) + parseFloat(e.target.num2.value);
+          outputDiv.innerHTML = formData + "&sum=" + numsAdded;
+        });
+    </script>
+  </body>
+</html>
